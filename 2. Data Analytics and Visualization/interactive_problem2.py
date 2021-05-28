@@ -23,18 +23,20 @@ press = sim_df['Pressure']
 KE = Total - PE
 terms = ['Pressure', 'Temperature', 'Potential Energy', 'Total Energy']
 
+#Step 1 - Define the figure and axis
 fig = plt.figure()
 ax = fig.subplots()
 
+#Step 2 - Plot the stuff
 ax.bar(terms,[press[2000]*1000, temp_data[2000]*1000, np.abs(PE[2000]), np.abs(Total[2000])])
 ax.set_ylim([0,1300])
 ax.set_ylabel('Values')
-ax_button = plt.axes([0.25, 0.9, 0.65,0.05]) #xposition, yposition, width and height
 
-#Properties of the button
+#Step 3 - Define properties of the button
+ax_button = plt.axes([0.25, 0.9, 0.65,0.05]) #xposition, yposition, width and height
 slide_button = Slider(ax_button, 'Timesteps', time[0], time[-1] , 2000) #Slider(ax_button, 'Timesteps',time[1], time[-1])
 
-
+#Step 4 - Define function to call from button action
 def update(val):
     fval = np.int(slide_button.val)
     ax.clear()
@@ -43,10 +45,7 @@ def update(val):
     ax.set_ylim([0,1300])
     fig.canvas.draw() #redraw the figure
 
-
-
-
-
+#Step 5 - Call the function from button methods
 slide_button.on_changed(update)
 
 plt.show()
