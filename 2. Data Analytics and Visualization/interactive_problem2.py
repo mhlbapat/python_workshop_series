@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 import os
 import pandas as pd
 from matplotlib.widgets import Button, RadioButtons, CheckButtons, Slider
-#%matplotlib inline
+# %matplotlib notebook
 
 sim_data = np.loadtxt('https://raw.githubusercontent.com/mhlbapat/python_workshop_series/main/2.%20Data%20Analytics%20and%20Visualization/energy_data.txt')
 # print(sim_data)
@@ -43,6 +43,7 @@ def update(val):
     ax.set_ylabel('Values')
     ax.bar(terms, [press[fval]*1000, temp_data[fval]*1000, np.abs(PE[fval]), np.abs(Total[2000])])
     ax.set_ylim([0,1300])
+    # plt.savefig()
     fig.canvas.draw() #redraw the figure
 
 #Step 5 - Call the function from button methods
